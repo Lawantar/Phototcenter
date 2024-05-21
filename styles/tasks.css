@@ -1,0 +1,24 @@
+/*                */
+/*main page style*/
+/*                */
+
+.header {
+  margin-left: 50px;
+}
+
+/*             */
+/*buttons style*/
+/*             */
+
+#supButton {
+  margin-left: 50px;
+  background: #fa9261;
+  width: 220px;
+  border-radius: 10px;
+  box-shadow: none;
+  border-color: #fa9261;
+}
+
+#supButton:hover {
+  background: rgba(204, 118, 78, 1.0);
+}

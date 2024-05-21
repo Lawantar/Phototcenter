@@ -1,0 +1,33 @@
+/*                */
+/*main page style*/
+/*                */
+
+.header {
+  margin-left: 50px;
+}
+
+/*             */
+/*buttons style*/
+/*             */
+
+#getTableButton {
+  margin-left: 50px;
+  background: #fa9261;
+  width: 220px;
+  height: 50px;
+  border: none;
+  outline: none;
+  color: #000000;
+  cursor: pointer;
+  position: relative;
+  border-radius: 10px;
+}
+
+#getTableButton:hover {
+  background: rgba(204, 118, 78, 1.0);
+}
+
+.table-form {
+  display: inline-block;
+  margin-bottom: 22px;
+}

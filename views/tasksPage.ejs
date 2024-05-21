@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Tasks forms
+        </title>
+        <link rel="stylesheet" type="text/css" href="styles/tasks.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="/scripts/nav.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fa9261;">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Photocenter</a>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active"><a id="openLink" class="nav-link" href="javascript:openMainPage();">Главная</a></li>
+                        <li class="nav-item active"><a id="openLink" class="nav-link" href="javascript:openOrdersPage();">Заказы/Продажи/Услуги</a></li>
+                        <li class="nav-item active"><a id="openLink" class="nav-link" href="javascript:openFormsPage();">Регистарция данных в таблицы</a></li>
+                        <li class="nav-item active"><a id="openLink" class="nav-link" href="javascript:openTasksPage();">Запросы</a></li>
+                        <li class="nav-item active"><a id="openLink" class="nav-link" href="javascript:openTablesPage();">Таблицы</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <main>
+            <h2 class="header">Запросы из задания</h2><br>
+            <button id="supButton" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#getOrderByDateModal"><b>Кол-во заказов по филиалам по дате</b></button><br><br>
+            <button id="supButton" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#getRevenueByDateModal"><b>Выручка по филиалам по дате</b></button><br><br>
+            <button id="supButton" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#getNumOfPhotosByDateModal"><b>Кол-во отпечатаных фото по филиалам по дате</b></button><br><br>
+            <button id="supButton" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#getNumOfFramesByDateModal"><b>Кол-во проявленных кадров по филиалам по дате</b></button><br><br>
+            <button id="supButton" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#getSuppliersByProductModal"><b>Поставщики определенного вида товара</b></button><br><br>
+            <button id="supButton" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#getClientsByBranchModal"><b>Клиенты определенного филиала</b></button><br><br>
+            <button id="supButton" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#getRevenueByBranchModal"><b>Выручка от продажи товаров по фотоцентру / филиалам</b></button><br><br>
+            <button id="supButton" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#getMostProductsByBranchModal"><b>Товары с наибольшим спросом по филиалам</b></button><br><br>
+            <button id="supButton" type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#getSalesByBranchModal"><b>Реализация фототоваров по филиалам</b></button><br><br>
+        </main>
+
+        <div class="modal fade" id="getOrderByDateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Task query</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="register" action="/getOrdersByDate" method="POST">
+                    <input class="form-control" id="start" type="text" required name="start" placeholder="Начало периода (гггг-мм-дд)"><br>
+                    <input class="form-control" id="end" type="text" required name="end" placeholder="Конец периода (гггг-мм-дд)"><br>
+                    <button type="submit" class="btn btn-success">Get data</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="getRevenueByDateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Task query</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="register" action="/getRevenueByDate" method="POST">
+                    <input class="form-control" id="start" type="text" required name="start" placeholder="Начало периода (гггг-мм-дд)"><br>
+                    <input class="form-control" id="end" type="text" required name="end" placeholder="Конец периода (гггг-мм-дд)"><br>
+                    <button type="submit" class="btn btn-success">Get data</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="getNumOfPhotosByDateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Task query</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="register" action="/getNumOfPhotosByDate" method="POST">
+                    <input class="form-control" id="start" type="text" required name="start" placeholder="Начало периода (гггг-мм-дд)"><br>
+                    <input class="form-control" id="end" type="text" required name="end" placeholder="Конец периода (гггг-мм-дд)"><br>
+                    <button type="submit" class="btn btn-success">Get data</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="getNumOfFramesByDateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Task query</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="register" action="/getNumOfFramesByDate" method="POST">
+                    <input class="form-control" id="start" type="text" required name="start" placeholder="Начало периода (гггг-мм-дд)"><br>
+                    <input class="form-control" id="end" type="text" required name="end" placeholder="Конец периода (гггг-мм-дд)"><br>
+                    <button type="submit" class="btn btn-success">Get data</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="getSuppliersByProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Task query</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="register" action="/getSuppliersByProduct" method="POST">
+                    <input class="form-control" id="name" type="text" required name="name" placeholder="Наименование товара"><br>
+                    <button type="submit" class="btn btn-success">Get data</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="getClientsByBranchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Task query</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="register" action="/getClientsByBranch" method="POST">
+                    <input class="form-control" id="branch_id" type="text" required name="branch_id" placeholder="ID Филиала"><br>
+                    <button type="submit" class="btn btn-success">Get data</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="getRevenueByBranchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Task query</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="register" action="/getRevenueByBranch" method="POST">
+                    <!--<input class="form-control" id="branch_id" type="text" required name="branch_id" placeholder="ID Филиала"><br>-->
+                    <button type="submit" class="btn btn-success">Get data</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="getMostProductsByBranchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Task query</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="register" action="/getMostProductsByBranch" method="POST">
+                    <input class="form-control" id="branch_id" type="text" required name="branch_id" placeholder="ID Филиала"><br>
+                    <button type="submit" class="btn btn-success">Get data</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="getSalesByBranchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Task query</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="register" action="/getSalesByBranch" method="POST">
+                    <input class="form-control" id="branch_id" type="text" required name="branch_id" placeholder="ID Филиала"><br>
+                    <button type="submit" class="btn btn-success">Get data</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </body>
+</html>

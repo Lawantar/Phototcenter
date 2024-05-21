@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Tables page
+        </title>
+        <link rel="stylesheet" type="text/css" href="styles/tables.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="/scripts/nav.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fa9261;">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Photocenter</a>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active"><a id="openLink" class="nav-link" href="javascript:openMainPage();">Главная</a></li>
+                        <li class="nav-item active"><a id="openLink" class="nav-link" href="javascript:openOrdersPage();">Заказы/Продажи/Услуги</a></li>
+                        <li class="nav-item active"><a id="openLink" class="nav-link" href="javascript:openFormsPage();">Регистарция данных в таблицы</a></li>
+                        <li class="nav-item active"><a id="openLink" class="nav-link" href="javascript:openTasksPage();">Запросы</a></li>
+                        <li class="nav-item active"><a id="openLink" class="nav-link" href="javascript:openTablesPage();">Таблицы</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <main>
+            <h2 class="header">Таблицы</h2><br>
+            <form class="table-form" id="clients" action="/getClientsTable" method="POST">
+                <button id="getTableButton" type="getTableButton"><b>Клиенты</b></button>               
+            </form>
+            <form class="table-form" id="orders" action="/getOrdersTable" method="POST">
+                <button id="getTableButton" type="getTableButton"><b>Клиентские заказы</b></button>               
+            </form><br>
+            <form class="table-form" id="products" action="/getProductsTable" method="POST">
+                <button id="getTableButton" type="getTableButton"><b>Товары</b></button>               
+            </form>
+            <form class="table-form" id="sales" action="/getSalesTable" method="POST">
+                <button id="getTableButton" type="getTableButton"><b>Продажи</b></button>               
+            </form><br>
+            <form class="table-form" id="supplies" action="/getSuppliesTable" method="POST">
+                <button id="getTableButton" type="getTableButton"><b>Поставки</b></button>               
+            </form>
+            <form class="table-form" id="suppliers" action="/getSuppliersTable" method="POST">
+                <button id="getTableButton" type="getTableButton"><b>Поставщики</b></button>               
+            </form><br>
+            <form class="table-form" id="services" action="/getServicesTable" method="POST">
+                <button id="getTableButton" type="getTableButton"><b>Услуги</b></button>               
+            </form>
+            <form class="table-form" id="photos" action="/getPhotosTable" method="POST">
+                <button id="getTableButton" type="getTableButton"><b>Фото</b></button>               
+            </form><br>
+            <form class="table-form" id="frames" action="/getFramesTable" method="POST">
+                <button id="getTableButton" type="getTableButton"><b>Кадры</b></button>               
+            </form>
+            <form class="table-form" id="kiosks" action="/getKiosksTable" method="POST">
+                <button id="getTableButton" type="getTableButton"><b>Киоски</b></button>               
+            </form><br>
+            <form class="table-form" id="branches" action="/getBranchesTable" method="POST">
+                <button id="getTableButton" type="getTableButton"><b>Филиалы</b></button>               
+            </form>
+            <form class="table-form" id="offices" action="/getOfficesTable" method="POST">
+                <button id="getTableButton" type="getTableButton"><b>Офисы</b></button>               
+            </form><br>
+        </main>
+    </body>
+</html>

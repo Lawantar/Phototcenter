@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Create data forms
+        </title>
+        <link rel="stylesheet" type="text/css" href="styles/style.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="/scripts/nav.js"></script>
+        <script language="javascript">
+          window.onload = (event) => {
+            let data = '<%-data%>';
+            console.log(data);
+             if (data == "OK"){
+              toastLiveExample = document.getElementById('liveToastSuccess');
+             } else if(data!=""){
+              toastLiveExample = document.getElementById('liveToastFailed');
+            }
+            let toast = new bootstrap.Toast(toastLiveExample);
+            toast.show();
+          }
+        </script>
+      </head>
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fa9261;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Photocenter</a>
+          <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active"><a id="openLink" class="nav-link" href="javascript:openMainPage();">Главная</a></li>
+                    <li class="nav-item active"><a id="openLink" class="nav-link" href="javascript:openOrdersPage();">Заказы/Продажи/Услуги</a></li>
+                    <li class="nav-item active"><a id="openLink" class="nav-link" href="javascript:openFormsPage();">Регистарция данных в таблицы</a></li>
+                    <li class="nav-item active"><a id="openLink" class="nav-link" href="javascript:openTasksPage();">Запросы</a></li>
+                    <li class="nav-item active"><a id="openLink" class="nav-link" href="javascript:openTablesPage();">Таблицы</a></li>
+                </ul>
+            </div>
+        </div>
+      </nav>
+        <main>
+            <h2 class="header">Добавить данные</h2><br>
+            <button id="supButton" type="supButton" data-bs-toggle="modal" data-bs-target="#clientRegModal"><b>Регистрация клиента</b></button><br><br>
+            <button id="supButton" type="supButton" data-bs-toggle="modal" data-bs-target="#supplierRegModal"><b>Регистрация поставщика</b></button><br><br>
+            <button id="supButton" type="supButton" data-bs-toggle="modal" data-bs-target="#productRegModal"><b>Новый товар</b></button><br><br>
+            <button id="supButton" type="supButton" data-bs-toggle="modal" data-bs-target="#supplyRegModal"><b>Новая поставка</b></button><br><br>
+            <h2 class="header">Структура предприятия</h2><br>
+            <button id="supButton" type="supButton" data-bs-toggle="modal" data-bs-target="#kioskRegModal"><b>Зарегистрировать новый киоск</b></button><br><br>
+            <button id="supButton" type="supButton" data-bs-toggle="modal" data-bs-target="#branchRegModal"><b>Зарегистрировать новый филиал</b></button><br><br>
+            <button id="supButton" type="supButton" data-bs-toggle="modal" data-bs-target="#officeRegModal"><b>Зарегистрировать новый офис</b></button><br><br>
+        </main>
+
+        <div class="modal fade" id="clientRegModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Register new Client</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="register" action="/addNewClient" method="POST">
+                    <input class="form-control" id ="fname" type="text" required name="c_name" placeholder="ФИО"><br>                    
+                    <input class="form-control" id="status" type="text" required name="status" placeholder="Статус клиента"><br>
+                    <input class="form-control" id="card" type="card" required name="card" placeholder="Наличие карты (true/false)"><br>
+                    <button type="submit" class="btn btn-success">Register</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="supplierRegModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Register new Supplier</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="register" action="/addNewSupplier" method="POST">
+                    <input class="form-control" id ="address" type="text" required name="address" placeholder="Адрес"><br>
+                    <input class="form-control" id="s_name" type="text" required name="s_name" placeholder="Название"><br>
+                    <button type="submit" class="btn btn-success">Register</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="productRegModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Register new Product</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="register" action="/addNewProduct" method="POST">
+                    <input class="form-control" id ="name" type="text" required name="name" placeholder="Именование товара"><br>
+                    <input class="form-control" id="price" type="text" required name="price" placeholder="Цена за ед."><br>
+                    <button type="submit" class="btn btn-success">Register</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="supplyRegModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Register new Supply</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="register" action="/addNewSupply" method="POST">
+                    <input class="form-control" id ="office_id" type="text" required name="office_id" placeholder="ID Офиса адресата"><br>
+                    <input class="form-control" id="supplier_id" type="text" required name="supplier_id" placeholder="ID Поставщика"><br>
+                    <input class="form-control" id ="product_id" type="text" required name="product_id" placeholder="ID Товара"><br>
+                    <input class="form-control" id="quantity" type="text" required name="quantity" placeholder="Кол-во товара"><br>
+                    <input class="form-control" id ="date" type="text" required name="date" placeholder="Дата поставки (гггг-мм-дд)"><br>
+                    <button type="submit" class="btn btn-success">Register</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="kioskRegModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Register new Kiosk</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="register" action="/addNewkiosk" method="POST">
+                    <input class="form-control" id ="branch_id" type="text" required name="branch_id" placeholder="ID Филиала прикрепления"><br>
+                    <input class="form-control" id="address" type="text" required name="address" placeholder="Адрес"><br>
+                    <input class="form-control" id="quantity" type="text" required name="quantity" placeholder="Кол-во рабочих мест"><br>
+                    <button type="submit" class="btn btn-success">Register</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="branchRegModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Register new Branch</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="register" action="/addNewBranch" method="POST">
+                    <input class="form-control" id ="office_id" type="text" required name="office_id" placeholder="ID Офиса прикрепления"><br>
+                    <input class="form-control" id="address" type="text" required name="address" placeholder="Адрес"><br>
+                    <input class="form-control" id="quantity" type="text" required name="quantity" placeholder="Кол-во рабочих мест"><br>
+                    <button type="submit" class="btn btn-success">Register</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade" id="officeRegModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Register new Office</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="register" action="/addNewOffice" method="POST">
+                    <input class="form-control" id ="address" type="text" required name="address" placeholder="Адрес"><br>
+                    <button type="submit" class="btn btn-success">Register</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+            <div id="liveToastSuccess" class="toast hide bg-success" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-header">
+                <strong class="me-auto">Query OK!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+            <div id="liveToastFailed" class="toast hide bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-header">
+                <strong class="me-auto">Query failed!</strong>
+                <small><%-data%></small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+            </div>
+          </div>
+    </body>
+</html>
